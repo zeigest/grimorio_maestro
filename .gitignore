@@ -137,3 +137,16 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Backend sensitive stuff
+backend/.env
+backend/scripts_local/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Config del editor local
+.vscode/
+.idea/
+
