@@ -32,16 +32,18 @@ const userSchema = new mongoose.Schema(
             lastName:  { type: String },
             avatarUrlImg: {
                 type: String,
-                default: './public/img/defaulPrifileUser.webp'
+                default: '/img/defaultProfileUser.webp'
             },
         },
         isActive: {
             type: Boolean,
             default: true
-        },
+        }
             },
         {
             timestamps: true,
+            toJSON: { virtuals: true },
+            toObject: { virtuals: true }
         }
         );
 
@@ -50,8 +52,8 @@ userSchema.pre('save',async function() {
     this.password = await bcrypt.hash(this.password, 12);
 });
 
-userSchema.methods.correctPassword = async function(candidatePassword, userPassword) {
-    return await bcrypt.compare(candidatePassword,userPassword);
+userSchema.methods.correctPassword = async function (candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password);
 };
 
 module.exports = mongoose.model('User', userSchema);

@@ -1,17 +1,13 @@
-import LoginForm from '../../shared/components/auth/loginForm';
+import React from 'react';
+import LoginForm from '../../shared/components/auth/loginForm';  
 
-useEffect(()=>{
-    document.title="Iniciar Sesión | Grimorio Maestro";
-},[]);
-    
-
-function LoginPage(){
+function LoginPage({onLoginSuccess}){
     return(
-        <div class="login-conteiner">
-            <h1>Inicia sesión para empezar.</h1>
-            <LoginForm/>
-        </div>
-        
+        <main>
+        <h1>Grimorio Mestro</h1>
+        <h2>Iniciar sesión</h2>
+        <LoginForm onLoginSuccess={onLoginSuccess}/>
+        </main>       
         
     )
 };
